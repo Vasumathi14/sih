@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subject Wise Attendance</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2 style="text-align:center;">Subject Wise Attendance</h2>
+  <canvas id="attendanceChart" width="600" height="400"></canvas>
+
+  <script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const attendanceChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["MCC", "MPMC", "ME", "MC", "CLOUD", "ADHOC"],
+        datasets: [{
+          label: 'Attendance %',
+          data: [85, 92, 76, 88, 95, 80], // Replace with your real data
+          backgroundColor: 'skyblue'
+        }]
+      },
+      options: {
+        indexAxis: 'y',  // horizontal bars
+        responsive: true,
+        scales: {
+          x: { beginAtZero: true, max: 100 }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
