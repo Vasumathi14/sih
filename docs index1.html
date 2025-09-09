@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subject Wise Attendance</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f4f6f9;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    canvas {
+      max-width: 700px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>Subject Wise Attendance</h2>
+  <canvas id="attendanceChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+
+    const subjects = ["MCC", "MPMC", "ME", "MC", "CLOUD", "ADHOC"];
+    const attendance = [85, 90, 75, 80, 95, 70]; // Example percentages
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: subjects,  // X-axis = subjects
+        datasets: [{
+          label: 'Attendance Percentage',
+          data: attendance, // Y-axis = percentage
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Percentage (%)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Subjects'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
