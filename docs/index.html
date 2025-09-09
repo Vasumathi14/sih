@@ -2,64 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Subject Wise Attendance</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 20px;
-      background-color: #f4f6f9;
-    }
-    h2 {
-      margin-bottom: 20px;
-    }
-    canvas {
-      max-width: 700px;
-      margin: auto;
-    }
-  </style>
 </head>
 <body>
-  <h2>Subject Wise Attendance</h2>
-  <canvas id="attendanceChart"></canvas>
+  <h2 style="text-align:center;">Subject Wise Attendance</h2>
+  <canvas id="attendanceChart" width="600" height="400"></canvas>
 
   <script>
     const ctx = document.getElementById('attendanceChart').getContext('2d');
-
-    const subjects = ["MCC", "MPMC", "ME", "MC", "CLOUD", "ADHOC"];
-    const attendance = [85, 90, 75, 80, 95, 70]; // Example percentages
-
-    new Chart(ctx, {
+    const attendanceChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: subjects,  // X-axis = subjects
+        labels: ["MCC", "MPMC", "ME", "MC", "CLOUD", "ADHOC"],
         datasets: [{
-          label: 'Attendance Percentage',
-          data: attendance, // Y-axis = percentage
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
+          label: 'Attendance %',
+          data: [85, 92, 76, 88, 95, 80], // Replace with your real data
+          backgroundColor: 'skyblue'
         }]
       },
       options: {
+        indexAxis: 'y',  // horizontal bars
         responsive: true,
         scales: {
-          y: {
-            beginAtZero: true,
-            max: 100,
-            title: {
-              display: true,
-              text: 'Percentage (%)'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Subjects'
-            }
-          }
+          x: { beginAtZero: true, max: 100 }
         }
       }
     });
